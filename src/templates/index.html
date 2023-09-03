@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ScrolllerDownloader</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <h1>ScrolllerDownloader - v2.0.0</h1>
+
+        <div class="flashedMessages">
+            {% for message in get_flashed_messages() %}
+                <div class="flash">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <form method="post" class="form">
+            <label for="link">Scrolller Link</label>
+            <input name="link" id="link">
+            <label for="output">Output Folder Path</label>
+            <input name="output" id="output">
+            <input type="checkbox" id="isVideo" name="isVideo" value="True">
+            <label for="isVideo">Is the piece of media a video?</label>
+            <input type="submit" value="submit" id="submit">
+        </form>
+
+        <script>
+            // Function to check if a string is present in any flashed message
+            function isStringInFlashedMessage(searchString, message) {
+                    if (message.textContent.includes(searchString)) {
+                        return true;
+                    }
+                    return false;
+            }
+
+            const error = "ERR:"
+            const warn = "WARN:"
+            const info = "INFO:"
+            const flashMessages = document.getElementsByClassName("flash");
+            for (let i = 0; i < flashMessages.length; i++) {
+                if (isStringInFlashedMessage(error, flashMessages[i])) {
+                    flashMessages[i].style.backgroundColor = "red";
+                } else if (isStringInFlashedMessage(warn, flashMessages[i])) {
+                    flashMessages[i].style.backgroundColor = "yellow";
+                } else if (isStringInFlashedMessage(info, flashMessages[i])) {
+                    flashMessages[i].style.backgroundColor = "blue";
+                } 
+            }
+        </script>
+    </body>
+</html>
