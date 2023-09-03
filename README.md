@@ -8,13 +8,7 @@ Once you have installed the latest version of Python, you can download the repo 
 Then run `setup.py` which will make sure that you have the correct version of python and will install the required dependencies.
 
 ## Running
-To use ScrolllerDownloader, you will need to run a command. First navigate in your terminal to where the ScrolllerDownloader source is. Next a command will need to be run.
-
-```
-python app.py -l "<scroller-url>" -o "<output-location>"
-```
-
-ScrolllerDownloader will then been run and the media will be fetched from the url and saved in the output location. If you encounter any errors, the table below can help you.
+To use ScrolllerDownloader run the `app.py` file in `src` folder. A flask server will start (usually on `127.0.0.1:5000`) and you will be able to use ScrolllerDownloader.
 
 ### Errors
 
